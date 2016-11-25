@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Content Delivery Service - Übersicht</title>
+<link rel="stylesheet" type="text/css" href="{{{basePath}}}/www/css/style.css">
+<script type="text/javascript" src="{{{basePath}}}/www/js/jquery-2.1.3.min.js"></script>
+</head>
+<script type="text/javascript">
+	function setAction(form) {
+		form.action = '{{{basePath}}}/upload?contentId=' + document.getElementById('contentId').value;
+		console.log('Uploading to ' + form.action);
+	}
+	
+	function deleteContent(contentId) {
+		$.ajax({
+			type: "DELETE",
+			url: "{{{basePath}}}/" + contentId,
+			success : function(msg) {
+				$('#entry-' + contentId).remove();
+			}
+		});
+	}
+	
+</script>
+<body>
+	<div id="body">
+		<div id="header"></div>
+		<div id="main">
+			<div class="panel">
+				<h1>Vorhandene Inhalte</h1>
+				<p>{{#each contentIds}}
+				<div id="entry-{{this}}">
+					<a href="{{{basePath}}}/{{this}}">{{this}}</a>
+					<button onclick="deleteContent('{{this}}');">Löschen</button>
+				</div>
+				{{/each}}
+				</p>
+			</div>
+			<div class="panel">
+				<h1>Inhalt hochladen</h1>
+				{{#if successId}}
+				<p>
+					Folgendes Inhaltspaket wurde erfolgreich hochgeladen:<br>
+					<a href="{{{basePath}}}/{{successId}}">{{successId}}</a>
+				</p>
+				{{/if}}
+				<form onsubmit="setAction(this);" method="post" enctype="multipart/form-data">
+					<label for="contentId">ID für das neue Inhaltspaket:</label>
+					<input name="contentId" id="contentId" type="text" required="required" value="{{contentId}}">
+					<br>
+					<label for="zipFile">Inhaltspaket (ZIP-Datei):</label>
+					<input name="zipFile" id="zipFile" type="file" required="required" accept="application/zip">
+					<br>
+					<input type="submit" value="Absenden">
+				</form>
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "webserver":{
+    "port":8083,
+    "basePath":"/services/cds"
+  },
+  "staticContentPath":"C:/PROJECTS/APPsist/festo/static",
+  "contentPath":"C:/PROJECTS/APPsist/festo/packages"
+}

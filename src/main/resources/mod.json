@@ -1,0 +1,12 @@
+{
+	"main" : "de.appsist.service.cds.MainVerticle",
+
+	"description" : "Service for handling content within an appsist instance.",
+	"licenses" : ["The Apache Software License Version 2.0"],
+	"author" : "Simon Schwantzer",
+
+	"keywords": ["appsist", "content", "service"],
+	"homepage": "http://www.appsist.de/",
+
+	"auto-redeploy": true
+}

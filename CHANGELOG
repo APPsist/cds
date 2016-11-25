@@ -1,0 +1,15 @@
+1.2.2 -- 2016-06-16
+- [UPDATE] Updated logging.
+- [NEW] Added heath check.
+
+1.2.1 -- 2016-03-23
+- [UPDATE] Changed logging.
+
+1.2.0 -- 2016-01-14
+- [NEW] Validate content packages on startup.
+
+1.1.0 -- 2015-12-03
+- [NEW] Content packages will now be decompressed at startup.
+
+1.0.0
+- First release version.
